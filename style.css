@@ -1,0 +1,30 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#map {
+  height: 90%;
+}
+#infobar{
+    height: 15%;
+    background: white;
+}
+.autostart {
+  position: fixed;
+  left: 30px;
+  top: 10px;
+  width: 40%;
+}
+.autoend {
+  position: fixed;
+  left: 230px;
+  top: 10px;
+  width: 40%;
+}
+.distance{
+  position: fixed;
+  left: 430px;
+  top: 10px;
+  width: 40%;
+}

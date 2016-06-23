@@ -1,1 +1,12 @@
+
+
+window.myJsonpCallback = function(data) {
+
+};
+
+var scriptEl = document.createElement('script');
+scriptEl.setAttribute('src',
+    'http://jsonp-aware-endpoint.com/user?callback=myJsonpCallback&id=123');
+document.body.appendChild(scriptEl);
+
 PJ Wickwire
