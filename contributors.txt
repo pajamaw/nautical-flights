@@ -1,12 +1,10 @@
+Simple Javascript Web app that:
+  -Uses GoogleMaps JS API and geometry library
+  -Use teh air-port-codes.com api to grab all the worlds airport codes
+  -Uses custom filter function to prevent data sources from outside US airports
+  -plots path using GoogleMaps PolyLine
+  -converts length to Nautical Miles
 
-
-window.myJsonpCallback = function(data) {
-
-};
-
-var scriptEl = document.createElement('script');
-scriptEl.setAttribute('src',
-    'http://jsonp-aware-endpoint.com/user?callback=myJsonpCallback&id=123');
-document.body.appendChild(scriptEl);
-
-PJ Wickwire
+Enjoy!
+-PJ Wickwire
+pjpeterww@gmail.com

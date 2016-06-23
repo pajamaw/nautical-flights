@@ -6,28 +6,32 @@
         <meta charset="utf-8">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.min.css">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.min.css"><!--Used for the autocomplete js -->
+        <link rel="stylesheet" href="style.css"> <!--Used for the basic UI -->
     </head>
     <body>
       <section id="infobar">
 
-        <form class="autostart">
-          <h3>Start: <input id="autocomplete1" class="autocomplete" type="text" name="keyword" placeholder="City name or airport code" /></h3>
+        <form class="autostart"><!--Used for the basic UI -->
+          <h3>Start: <input id="autocomplete1" class="autocomplete" type="search" name="keyword" placeholder="City name or airport code" /></h3>
+          <!--Used for the autcomplete ajax function -->
         </form>
 
-        <form class="autoend">
-          <h3>End: <input id="autocomplete2" class="autocomplete" type="text" name="keyword" placeholder="City name or airport code" /></h3>
-          <datalist id="airport-datalist"></datalist>
+        <form class="autoend"><!--Used for the basic UI -->
+          <h3>End: <input id="autocomplete2" class="autocomplete" type="search" name="keyword" placeholder="City name or airport code" /></h3>
+          <!--Used for the autcomplete ajax function -->
+
         </form>
 
-        <h3 class="distance">Distance: <span id="distance">0</span> in nautical miles <span><button id="button">Reset</button></span></h3>
+        <h3 class="distance">Distance: <span id="distance">0</span> in nautical miles <span><button id="button">New Path</button></span></h3>
+        <!--Is filled via the javascript DOM change -->
 
       </section>
 
       <div id="map">
       </div>
-      <script  src="flightpath.js"></script>
+      <script src="flightpath.js"></script><!--Main js file -->
+
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_5h7UwDWuzihCPUwd8FA_NKgEJM30URk&callback=initMap&libraries=geometry"></script>
     </body>
 </html>
