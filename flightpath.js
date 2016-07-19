@@ -1,3 +1,4 @@
+
 var map; //setting map global
 var marker;
 function initMap() { //creating a new map to be used for the app
@@ -92,8 +93,8 @@ document.addEventListener("DOMContentLoaded", function(event){
                   term: request.term, // input field value
                   limit: 100,
                   size: 0,
-                  key: "b34e0b6ea2",
-                  secret: "ce36bb996d28c2c"
+                  key: "YOUR API KEY HERE"
+                  secret: "YOUR API SECRET HERE"
               },
               success: function(data) {
                 //debugger;
