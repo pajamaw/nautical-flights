@@ -4,33 +4,48 @@
         <title>Simple Map</title>
         <meta name="viewport" content="initial-scale=1.0">
         <meta charset="utf-8">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.3.1/leaflet.css" />
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.min.css"><!--Used for the autocomplete js -->
         <link rel="stylesheet" href="style.css"> <!--Used for the basic UI -->
+
+        <script src="http://cdn.leafletjs.com/leaflet-0.3.1/leaflet.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="../layer/tile/Google.js"></script>
+
     </head>
     <body>
-      <section id="infobar">
+      <div id="infobar">
+        <ul>
+          <li>
+            <form class="autostart"><!--Used for the basic UI -->
 
-        <form class="autostart"><!--Used for the basic UI -->
-          <h3>Start: <input id="autocomplete1" class="autocomplete" type="search" name="keyword" placeholder="City name or airport code" /></h3>
-          <!--Used for the autcomplete ajax function -->
-        </form>
+              <h3>Start: <input id="autocomplete1" class="autocomplete" type="search" name="keyword" placeholder="City name or airport code" /></h3>
+            <!--Used for the autcomplete ajax function -->
+            </form>
+          </li>
+          <li>
+            <form class="autoend"><!--Used for the basic UI -->
 
-        <form class="autoend"><!--Used for the basic UI -->
-          <h3>End: <input id="autocomplete2" class="autocomplete" type="search" name="keyword" placeholder="City name or airport code" /></h3>
-          <!--Used for the autcomplete ajax function -->
+              <h3>End: <input id="autocomplete2" class="autocomplete" type="search" name="keyword" placeholder="City name or airport code" /></h3>
+              <!--Used for the autcomplete ajax function -->
 
-        </form>
-
-        <h3 class="distance">Distance: <span id="distance">0</span> in nautical miles <span><button id="button">New Path</button></span></h3>
-        <!--Is filled via the javascript DOM change -->
-
-      </section>
+            </form>
+          </li>
+          <li>
+            <h3 class="distance">Distance: <span id="distance">0 in nautical miles</span> <span>   <button id="button">New Path</button></span></h3>
+            <!--Is filled via the javascript DOM change -->
+          </li>
+        </ul>
+      </div>
 
       <div id="map">
       </div>
+
+
+
       <script src="flightpath.js"></script><!--Main js file -->
-      <script src="https://maps.googleapis.com/maps/api/js?key=[your gmaps api]&callback=initMap&libraries=geometry"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_5h7UwDWuzihCPUwd8FA_NKgEJM30URk&callback=initMap&libraries=geometry"></script>
+
     </body>
 </html>

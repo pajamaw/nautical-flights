@@ -4,27 +4,23 @@ html, body {
   padding: 0;
 }
 #map {
-  height: 90%;
+  height: 80%;
+  width: 80%;
+  margin: auto;
 }
-#infobar{
-    height: 15%;
-    background: white;
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
 }
-.autostart {
-  position: fixed;
-  left: 30px;
-  top: 10px;
-  width: 40%;
-}
-.autoend {
-  position: fixed;
-  left: 230px;
-  top: 10px;
-  width: 40%;
-}
-.distance{
-  position: fixed;
-  left: 430px;
-  top: 10px;
-  width: 40%;
+ul li h3,
+ul li form h3{
+  color: white;
+  float: left;
+  display: block;
+  padding: 4px;
 }
