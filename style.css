@@ -2,11 +2,23 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-image: url('background.jpg');
 }
+
 #map {
   height: 80%;
   width: 80%;
   margin: auto;
+  margin-top: 20px;
+  border-radius: 25px;
+  border: 2px solid #5f5f5f;
+}
+.leaflet-map-pane {
+    z-index: 2 !important;
+}
+
+.leaflet-google-layer {
+    z-index: 1 !important;
 }
 
 

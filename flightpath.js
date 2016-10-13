@@ -1,33 +1,171 @@
-
 let map; //setting map global
 let marker;
 
 function initMap() { //creating a new map to be used for the app
 
-  let map = new L.map('map', {
-    center: {lat: 37.0902, lng: -95.7129}, //usa
-    zoom: 4
-  });
-  let osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+//  map = new L.Map(document.getElementById('map'), {center: new L.LatLng(37.0902, -95.7129), zoom: 4});
+//  let osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+//  var ggl = new L.Google();
+//  var ggl2 = new L.Google('TERRAIN');
+//  map.addLayer(ggl);
+
+
+//   map = new L.Map('map', {
+//    center: {lat: 37.0902, lng: -95.7129}, //usa
+//    zoom: 4
+//  });
+//let osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+//var map = new L.Map('map', {center: new L.LatLng(37.0902, -95.7129), zoom: 4});
+
+
+//var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+//var styles = [
+//    {
+//      featureType: 'all',
+//      stylers: [{hue: '#ff0000'}]
+//    }
+// ];
+//var ggl = new L.Google('ROADMAP', {
+//	mapOptions: {
+//		styles: styles
+//	}
+//});
+
+//map.addLayer(ggl);
+//map.addControl(new L.Control.Layers( {'OSM':osm, 'Google':ggl}, {}));
+let styledMapType = new google.maps.StyledMapType(
+    [
+      {elementType: 'geometry', stylers: [{color: '#ebe3cd'}]},
+      {elementType: 'labels.text.fill', stylers: [{color: '#523735'}]},
+      {elementType: 'labels.text.stroke', stylers: [{color: '#f5f1e6'}]},
+      {
+        featureType: 'administrative',
+        elementType: 'geometry.stroke',
+        stylers: [{color: '#c9b2a6'}]
+      },
+      {
+        featureType: 'administrative.land_parcel',
+        elementType: 'geometry.stroke',
+        stylers: [{color: '#dcd2be'}]
+      },
+      {
+        featureType: 'administrative.land_parcel',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#ae9e90'}]
+      },
+      {
+        featureType: 'landscape.natural',
+        elementType: 'geometry',
+        stylers: [{color: '#dfd2ae'}]
+      },
+      {
+        featureType: 'poi',
+        elementType: 'geometry',
+        stylers: [{color: '#dfd2ae'}]
+      },
+      {
+        featureType: 'poi',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#93817c'}]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'geometry.fill',
+        stylers: [{color: '#a5b076'}]
+      },
+      {
+        featureType: 'poi.park',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#447530'}]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry',
+        stylers: [{color: '#f5f1e6'}]
+      },
+      {
+        featureType: 'road.arterial',
+        elementType: 'geometry',
+        stylers: [{color: '#fdfcf8'}]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry',
+        stylers: [{color: '#f8c967'}]
+      },
+      {
+        featureType: 'road.highway',
+        elementType: 'geometry.stroke',
+        stylers: [{color: '#e9bc62'}]
+      },
+      {
+        featureType: 'road.highway.controlled_access',
+        elementType: 'geometry',
+        stylers: [{color: '#e98d58'}]
+      },
+      {
+        featureType: 'road.highway.controlled_access',
+        elementType: 'geometry.stroke',
+        stylers: [{color: '#db8555'}]
+      },
+      {
+        featureType: 'road.local',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#806b63'}]
+      },
+      {
+        featureType: 'transit.line',
+        elementType: 'geometry',
+        stylers: [{color: '#dfd2ae'}]
+      },
+      {
+        featureType: 'transit.line',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#8f7d77'}]
+      },
+      {
+        featureType: 'transit.line',
+        elementType: 'labels.text.stroke',
+        stylers: [{color: '#ebe3cd'}]
+      },
+      {
+        featureType: 'transit.station',
+        elementType: 'geometry',
+        stylers: [{color: '#dfd2ae'}]
+      },
+      {
+        featureType: 'water',
+        elementType: 'geometry.fill',
+        stylers: [{color: '#b9d3c2'}]
+      },
+      {
+        featureType: 'water',
+        elementType: 'labels.text.fill',
+        stylers: [{color: '#92998d'}]
+      }
+    ],
+    {name: 'Styled Map'});
 
   map = new google.maps.Map(document.getElementById('map'), {
 
       center: {lat: 37.0902, lng: -95.7129}, //usa
-      zoom: 4
+    zoom: 4,
+    mapTypeControlOptions: {
+      mapTypeIds: ['map', 'satellite', 'styled_map']
+    }
 
-    });
+ });
+  map.mapTypes.set('styled_map', styledMapType);
+  map.setMapTypeId('styled_map');
+};
 
-  };
+document.addEventListener("DOMContentLoaded", function(event){
+    document.getElementById('button').addEventListener('click', removeAll);
 
-  document.addEventListener("DOMContentLoaded", function(event){
-  document.getElementById('button').addEventListener('click', removeAll);
+    let flightPoints = [];
+    let distancePoints = [];
 
-  let flightPoints = [];
-  let distancePoints = [];
-
-  function convertToSeaMiles(dist) {
-    return Math.round(dist / 1000 * 0.539957 *10)/10
-  };
+  const convertToSeaMiles = (dist) => Math.round(dist / 1000 * 0.539957 *10)/10
 
   function removeAll(){ //used to reset map after button click or additional point requested
     flightPoints = [];
@@ -59,10 +197,10 @@ function initMap() { //creating a new map to be used for the app
   function createFlightPath(fPoints, dPoints, m){//creates geodesic polyline
     if(fPoints.length == 2){
 
-      var distance = google.maps.geometry.spherical.computeDistanceBetween(dPoints[0], dPoints[1]);
+      const distance = google.maps.geometry.spherical.computeDistanceBetween(dPoints[0], dPoints[1]);
       document.getElementById("distance").textContent=`${convertToSeaMiles(distance)} nm`;
 
-      var flightPath = new google.maps.Polyline({
+      let flightPath = new google.maps.Polyline({
         map: map,
         path: fPoints,
         geodesic: true,
@@ -72,7 +210,7 @@ function initMap() { //creating a new map to be used for the app
       });
 
     }else{
-      var reset = confirm("Would you like to reset the form and check a new distance?");
+      let reset = confirm("Would you like to reset the form and check a new distance?");
 
       if(!reset){//if there is a 3rd marker it asks you to reset the page to create a new
                         //a new path or it will negate latest marker
@@ -87,7 +225,7 @@ function initMap() { //creating a new map to be used for the app
   };
 
   function setMarker(selectedClick, dPoints, fPoints){
-
+    //console.log(selectedClick.item)
     marker = new google.maps.Marker({//sets marker using new cooridnates
       map: map,
       animation: google.maps.Animation.DROP,
@@ -98,12 +236,11 @@ function initMap() { //creating a new map to be used for the app
       },
       label: selectedClick.item.label
     });
-
+    //console.log(L.marker())
     dPoints.push(marker.position);
     fPoints.push(marker.coor);
     panToMarker(fPoints, marker);
     checkFlightPath(fPoints, dPoints, marker);
-
   };
 
   $('.autocomplete').autocomplete({//autocomplete ajax function
@@ -116,8 +253,8 @@ function initMap() { //creating a new map to be used for the app
                   term: request.term, // input field value
                   limit: 100,
                   size: 0,
-                  key: "",
-                  secret: ""
+                  key: "b34e0b6ea2",
+                  secret: "ce36bb996d28c2c"
               },
 
               success: function(data) {

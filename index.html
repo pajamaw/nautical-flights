@@ -8,11 +8,11 @@
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.min.css"><!--Used for the autocomplete js -->
         <link rel="stylesheet" href="style.css"> <!--Used for the basic UI -->
 
-        <script src="http://cdn.leafletjs.com/leaflet-0.3.1/leaflet.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
-        <script src="../layer/tile/Google.js"></script>
 
+
+      <!--  <script type="text/javascript"src="https://gist.githubusercontent.com/bencevans/4504864/raw/..."></script>-->
     </head>
     <body>
       <div id="infobar">
@@ -43,8 +43,11 @@
       </div>
 
 
-
+      <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-plugins/2.0.0/layer/tile/Google.min.js" type="text/javascript"></script>
+      <script src="layerGoogle.js" type="text/javascript"></script>
       <script src="flightpath.js"></script><!--Main js file -->
+
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_5h7UwDWuzihCPUwd8FA_NKgEJM30URk&callback=initMap&libraries=geometry"></script>
 
     </body>
