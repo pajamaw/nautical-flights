@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function(event){
   $('.autocomplete').autocomplete({//autocomplete ajax function
       source: function(request, response) {
           $.ajax({//ajax request using airport codes api to grab all the airport codes for the world
-              url: "//www.air-port-codes.com/search/",
+              url: "http://www.air-port-codes.com/search/",
               jsonp: "callback",
               dataType: "jsonp",
               data: {
