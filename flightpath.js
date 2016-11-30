@@ -1,6 +1,5 @@
 let map; //setting map global
 let marker;
-
 function initMap() { //creating a new map to be used for the app
 
 //  map = new L.Map(document.getElementById('map'), {center: new L.LatLng(37.0902, -95.7129), zoom: 4});
@@ -148,7 +147,7 @@ let styledMapType = new google.maps.StyledMapType(
 
   map = new google.maps.Map(document.getElementById('map'), {
 
-      center: {lat: 37.0902, lng: -95.7129}, //usa
+    center: {lat: 37.0902, lng: -95.7129}, //usa
     zoom: 4,
     mapTypeControlOptions: {
       mapTypeIds: ['map', 'satellite', 'styled_map']
@@ -208,7 +207,25 @@ document.addEventListener("DOMContentLoaded", function(event){
         strokeOpacity: 1.0,
         strokeWeight: 2
       });
+      //for testing out destination requests
+      // let request = {
+      //   origin: dPoints[0],
+      //   destination: dPoints[1],
+      //   travelMode: 'DRIVING',
+      //   provideRouteAlternatives: true
+      // }
+      // let directionsService = new google.maps.DirectionsService();
+      // let directionsDisplay = new google.maps.DirectionsRenderer();
+      //
+      // directionsService.route(request, function(result, status) {
+      //   if (status == 'OK') {
+      //     directionsDisplay.setMap(map);
+      //     directionsDisplay.setDirections(result);
+      //     console.log(result)
+      //   }
+      // });
 
+      // for testing purposes
     }else{
       let reset = confirm("Would you like to reset the form and check a new distance?");
 
